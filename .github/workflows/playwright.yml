@@ -1,0 +1,27 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Install Browsers
+        run: npx playwright install
+      - name: Install dependencies
+        run: npm i
+      - name: Run Playwright tests
+        run: npm run test:cucumber
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: reports
+          path: reports/
+          retention-days: 30
