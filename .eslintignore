@@ -7,3 +7,7 @@ node_modules
 package
 
 playwright.config.ts
+
+feature
+
+cucumber.mjs

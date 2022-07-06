@@ -2,13 +2,11 @@ const getWorldParams = () => {
   const params = {
     foo: 'bar',
   };
-
-  return params;
 };
 
 export default {
   requireModule: ['ts-node/register'],
-  require: ['src/**/*.ts'],
+  require: ['e2e/**/*.js'],
   format: [
     // 'message:e2e/reports/cucumber-report.ndjson',
     'json:reports/cucumber-report.json',

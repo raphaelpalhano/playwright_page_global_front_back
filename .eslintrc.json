@@ -1,63 +1,45 @@
 {
   "env": {
-    "node": true,
-    "commonjs": true,
-    "es6": true,
-    "jest": true,
-    "jasmine": true
+    "browser": true,
+    "es6": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript"
+    "airbnb-base"
   ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true
-    }
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
+    "import/prefer-default-export": "off",
+    "no-undef": "off",
+    "func-names": "off",
+    "no-unused-expressions": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 130
+      }
+    ],
     "indent": [
       "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
+      2
     ],
-    "no-console": ["error"],
-    "no-debugger": ["error"],
-    "no-multiple-empty-lines": [
+    "quotes": [
       "error",
+      "single",
       {
-        "max": 1,
-        "maxEOF": 1
+        "avoidEscape": false,
+        "allowTemplateLiterals": true
       }
     ],
-    "semi": ["error", "always"],
-    "import/order": ["error", {
-      "groups": ["index", "sibling", "parent", "internal", "external", "builtin"]
-    }],
-    "react/prop-types": "off",
-    "react/display-name": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-non-null-assertion": "off"
-    
-  },
-  "settings": {
-    "import/extensions": [
-      ".js",
-      ".ts"
+    "semi": [
+      2,
+      "always"
     ]
   }
 }
