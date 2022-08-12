@@ -6,7 +6,7 @@ import {
   AfterAll,
 } from '@cucumber/cucumber';
 import { chromium, webkit, firefox } from '@playwright/test';
-import { removeFiles } from '../helpers/managerFiles';
+import { removeFiles } from '../../helpers/managerFiles';
 import { config } from './config';
 
 setDefaultTimeout(process.env.PWDEBUG ? -1 : 60 * 1000);
@@ -17,6 +17,7 @@ const options = {
   args: ['--start-maximized'],
   acceptDownloads: true,
   recordVideo: VIDEO ? { dir: 'reports/videos' } : undefined,
+  baseURL: config.BASE_URL,
 };
 
 BeforeAll(async () => {
@@ -38,8 +39,8 @@ BeforeAll(async () => {
 Before(async ({ pickle }) => {
   global.testName = pickle.name.replace(/\W/g, '-');
   global.context = await global.browser.newContext(options);
-  global.page = await global.context.newPage();
-  await page.goto(global.BASE_URL);
+  globalThis.page = await global.context.newPage();
+  await page.goto('/todomvc/');
 });
 
 After(async () => {

@@ -1,5 +1,5 @@
 import { Given, Then, When } from '@cucumber/cucumber';
-import factory from '../fixtures/factory';
+import factory from '../../../fixtures/frontend/factory';
 import { PlaywraightPage } from '../pages/PlaywraightPage';
 
 const items = factory.products('valid');

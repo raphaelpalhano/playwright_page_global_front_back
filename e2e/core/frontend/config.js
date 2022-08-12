@@ -11,10 +11,5 @@ const browserOptions = {
 export const config = {
   browser: process.env.BROWSER || 'chromium',
   browserOptions,
-  IMG_THRESHOLD: { threshold: 0.4 },
-  BASE_API_URL: 'https://catfact.ninja/',
+  BASE_URL: 'https://demo.playwright.dev',
 };
-
-Object.assign(global, {
-  BASE_URL: 'https://demo.playwright.dev/todomvc/',
-});
