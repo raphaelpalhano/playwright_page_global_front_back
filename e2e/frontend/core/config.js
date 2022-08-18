@@ -12,4 +12,5 @@ export const config = {
   browser: process.env.BROWSER || 'chromium',
   browserOptions,
   BASE_URL: 'https://demo.playwright.dev',
+  timeout: 60000,
 };

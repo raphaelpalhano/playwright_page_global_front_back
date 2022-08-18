@@ -2,15 +2,22 @@ import {
   Before,
   After,
   BeforeAll,
-  setDefaultTimeout,
   AfterAll,
 } from '@cucumber/cucumber';
 import { request } from '@playwright/test';
+import { removeFiles } from '../../helpers/managerFiles';
 import { config } from './config';
 
-setDefaultTimeout(process.env.PWDEBUG ? -1 : config.TIMEOUT);
+const chai = require('chai');
 
 BeforeAll(async () => {
+  await removeFiles('reports/videos/*.webm');
+  await removeFiles('reports/images/*.png');
+
+  global.expect = chai.expect;
+  global.assert = chai.assert;
+  global.should = chai.should;
+
   global.interact = await request.newContext({
     baseURL: config.BASE_API_URL,
     extraHTTPHeaders: {

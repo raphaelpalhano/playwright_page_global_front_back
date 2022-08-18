@@ -29,6 +29,6 @@
   },
   "include": [
     "e2e/**/*.js"
-, "e2e/core/custom-word.ts", "e2e/core/backend/hook.js", "e2e/core/frontend/hook.config.ts"  ],
+, "e2e/core/custom-word.ts", "e2e/backend/core/hook.js", "e2e/core/frontend/hook.config.ts"  ],
   
 }

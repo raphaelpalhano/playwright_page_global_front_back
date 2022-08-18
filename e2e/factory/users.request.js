@@ -3,12 +3,12 @@ import faker from 'faker-br';
 export default {
   loginUser: (option) => {
     switch (option) {
-    case 'valid':
+    case 'valido':
       return {
         email: process.env.EMAIL,
         password: process.env.PASSWORD,
       };
-    case 'invalid':
+    case 'invalido':
       return {
         email: faker.internet.email(),
         password: faker.internet.password(),
@@ -20,14 +20,14 @@ export default {
 
   getUser: (option) => {
     switch (option) {
-    case 'valid':
+    case 'valido':
       return {
         nome: faker.name.firstName(),
         email: process.env.EMAIL,
         password: process.env.PASSWORD,
         administrador: 'true',
       };
-    case 'invalid':
+    case 'invalido':
       return {
         nome: faker.name.firstName(),
         email: faker.internet.email(),

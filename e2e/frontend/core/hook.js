@@ -2,14 +2,13 @@ import {
   Before,
   After,
   BeforeAll,
-  setDefaultTimeout,
   AfterAll,
 } from '@cucumber/cucumber';
 import { chromium, webkit, firefox } from '@playwright/test';
 import { removeFiles } from '../../helpers/managerFiles';
 import { config } from './config';
 
-setDefaultTimeout(process.env.PWDEBUG ? -1 : 60 * 1000);
+const chai = require('chai');
 
 const VIDEO = true;
 
@@ -18,11 +17,16 @@ const options = {
   acceptDownloads: true,
   recordVideo: VIDEO ? { dir: 'reports/videos' } : undefined,
   baseURL: config.BASE_URL,
+  timeout: config.timeout,
 };
 
 BeforeAll(async () => {
   await removeFiles('reports/videos/*.webm');
   await removeFiles('reports/images/*.png');
+  global.expect = chai.expect;
+  global.assert = chai.assert;
+  global.should = chai.should;
+
   switch (config.browser) {
   case 'webkit':
     global.browser = await webkit.launch(config.browserOptions);

@@ -5,5 +5,5 @@ Feature: Acessando a api com usuario
 
 
     Scenario: Acessando com usuário válido
-        Given o acesso com usuario "valid"
+        Given o acesso com usuario "valido"
         Then deve exibir a mensagem "Login realizado com sucesso"
